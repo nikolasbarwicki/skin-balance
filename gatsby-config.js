@@ -21,6 +21,10 @@ module.exports = {
             family: `Montserrat`,
             variants: [`400`, `600`, `700`],
           },
+          {
+            family: `Raleway`,
+            variants: [`600`],
+          },
         ],
       },
     },
