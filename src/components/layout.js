@@ -7,7 +7,7 @@ const MainLayout = ({ children }) => (
   <>
     <GlobalStyles />
     <Header />
-    {children}
+    <main>{children}</main>
     <Footer />
   </>
 );

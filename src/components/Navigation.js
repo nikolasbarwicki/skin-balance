@@ -4,10 +4,10 @@ const Navigation = () => {
   return (
     <nav>
       <ul>
-        <li>page 1</li>
-        <li>page 2</li>
-        <li>page 3</li>
-        <li>page 4</li>
+        <li>marka</li>
+        <li>cennik</li>
+        <li>o nas</li>
+        <li>kontakt</li>
       </ul>
     </nav>
   );
