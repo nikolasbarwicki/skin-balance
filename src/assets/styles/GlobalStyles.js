@@ -29,6 +29,7 @@ const GlobalStyle = createGlobalStyle`
 
 
     body {
+        font-size: 1.6rem;
         font-family: "Montserrat";
         font-weight: 400;
         line-height: 1.6;
