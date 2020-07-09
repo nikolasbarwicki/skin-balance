@@ -7,7 +7,7 @@ import Layout from "../components/Layout";
 const Hero = styled.div`
   display: flex;
   justify-content: center;
-  margin: 10rem 0 4rem;
+  margin: 4rem 0 4rem;
 `;
 
 const BrandPage = ({ data }) => {

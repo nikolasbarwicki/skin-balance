@@ -7,12 +7,24 @@ import theme from "../assets/themes/theme";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
 
+const Wrapper = styled.div`
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+`;
+
 const MainLayout = ({ children }) => (
   <ThemeProvider theme={theme}>
     <GlobalStyles />
-    <Header />
-    {children}
-    <Footer />
+    <Wrapper>
+      <div>
+        <Header />
+        {children}
+      </div>
+
+      <Footer />
+    </Wrapper>
   </ThemeProvider>
 );
 
