@@ -2,6 +2,7 @@ import React from "react";
 import { graphql } from "gatsby";
 import styled from "styled-components";
 import Layout from "../components/Layout";
+import Caption from "../components/Caption";
 import Button from "../components/Button";
 import Section from "../components/Section";
 
@@ -158,8 +159,7 @@ const IndexPage = ({ data }) => {
         </Header>
 
         <AboutSectionWrapper>
-          <h2>Katarzyna Gierczyk</h2>
-          <span>dyplomowany kosmetolog</span>
+          <Caption />
           <StyledBr />
           <p>
             Moja praca jest moją pasją, dlatego nieustannie kształcę się i

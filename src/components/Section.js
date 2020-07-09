@@ -20,7 +20,7 @@ const Container = styled.div`
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   justify-items: center;
-  align-items: center;
+  align-items: ${props => (props.topAligned ? "start" : "center")};
 
   grid-column: ${props =>
     props.fullWidth
@@ -28,7 +28,13 @@ const Container = styled.div`
       : "content-start / content-end"};
 `;
 
-const Section = ({ children, fullWidth, grayBackground, padding }) => {
+const Section = ({
+  children,
+  fullWidth,
+  grayBackground,
+  padding,
+  topAligned,
+}) => {
   return (
     <StyledSection
       fullWidth={fullWidth}
@@ -36,7 +42,9 @@ const Section = ({ children, fullWidth, grayBackground, padding }) => {
       padding={padding}
     >
       <Grid>
-        <Container fullWidth={fullWidth}>{children}</Container>
+        <Container fullWidth={fullWidth} topAligned={topAligned}>
+          {children}
+        </Container>
       </Grid>
     </StyledSection>
   );
