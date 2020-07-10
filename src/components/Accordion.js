@@ -26,6 +26,10 @@ const Container = styled.div`
   margin: 1rem 0;
 `;
 
+const OuterWrapper = styled.section`
+  margin-top: 6rem;
+`;
+
 const Accordion = () => {
   const data = useStaticQuery(graphql`
     {
@@ -121,7 +125,7 @@ const Accordion = () => {
   ];
 
   return (
-    <div>
+    <OuterWrapper>
       {parsedData.map((el, index) => (
         <AccordionWrapper>
           <Container>
@@ -139,7 +143,7 @@ const Accordion = () => {
           </Container>
         </AccordionWrapper>
       ))}
-    </div>
+    </OuterWrapper>
   );
 };
 

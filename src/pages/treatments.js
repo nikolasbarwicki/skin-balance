@@ -9,9 +9,22 @@ const Header = styled.div`
   justify-self: start;
 `;
 
-const TreatmentsPage = () => (
+const Hero = styled.img`
+  display: flex;
+  width: 100vw;
+  height: 30rem;
+  object-fit: cover;
+  justify-content: center;
+  margin: 4rem 0;
+`;
+
+const TreatmentsPage = ({ data }) => (
   <Layout>
-    <div>hero</div>
+    <Hero
+      src={data.allFile.nodes[0].childImageSharp.fluid.src}
+      srcSet={data.allFile.nodes[0].childImageSharp.fluid.srcSet}
+      sizes={data.allFile.nodes[0].childImageSharp.fluid.sizes}
+    />
     <Section>
       <Header>
         <h2>Zabiegi</h2>
@@ -33,5 +46,21 @@ const TreatmentsPage = () => (
     <Accordion />
   </Layout>
 );
+
+export const query = graphql`
+  {
+    allFile(filter: { name: { eq: "prices-1" } }) {
+      nodes {
+        childImageSharp {
+          fluid(jpegQuality: 90, maxHeight: 300) {
+            sizes
+            src
+            srcSet
+          }
+        }
+      }
+    }
+  }
+`;
 
 export default TreatmentsPage;
