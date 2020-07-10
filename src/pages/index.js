@@ -5,6 +5,8 @@ import Layout from "../components/Layout";
 import Caption from "../components/Caption";
 import Button from "../components/Button";
 import Section from "../components/Section";
+import Carousel from "@brainhubeu/react-carousel";
+import "@brainhubeu/react-carousel/lib/style.css";
 
 const LogosWrapper = styled.div`
   display: grid;
@@ -98,11 +100,33 @@ const ImageWrapper = styled.div`
   padding-left: 4rem;
 `;
 
+const SliderWrapper = styled.div`
+  width: 100vw;
+`;
+
 const IndexPage = ({ data }) => {
   console.log(data);
   return (
     <Layout>
-      <Section>Slider</Section>
+      <SliderWrapper>
+        <Carousel autoPlay={5000} animationSpeed={1000} infinite centered dots>
+          <img
+            src={data.slider.nodes[0].childImageSharp.fluid.src}
+            srcSet={data.slider.nodes[0].childImageSharp.fluid.srcSet}
+            sizes={data.slider.nodes[0].childImageSharp.fluid.sizes}
+          />
+          <img
+            src={data.slider.nodes[1].childImageSharp.fluid.src}
+            srcSet={data.slider.nodes[1].childImageSharp.fluid.srcSet}
+            sizes={data.slider.nodes[1].childImageSharp.fluid.sizes}
+          />
+          <img
+            src={data.slider.nodes[2].childImageSharp.fluid.src}
+            srcSet={data.slider.nodes[2].childImageSharp.fluid.srcSet}
+            sizes={data.slider.nodes[2].childImageSharp.fluid.sizes}
+          />
+        </Carousel>
+      </SliderWrapper>
       <Section padding="8">
         <div>
           <h4>Marka</h4>
@@ -228,6 +252,17 @@ export const query = graphql`
       nodes {
         childImageSharp {
           fluid(maxWidth: 1200, jpegQuality: 90) {
+            sizes
+            src
+            srcSet
+          }
+        }
+      }
+    }
+    slider: allFile(filter: { name: { regex: "/slider-/" } }) {
+      nodes {
+        childImageSharp {
+          fluid(maxHeight: 800, jpegQuality: 90) {
             sizes
             src
             srcSet
