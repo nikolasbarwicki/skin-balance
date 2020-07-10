@@ -24,6 +24,7 @@ const AboutPage = ({ data }) => {
         src={data.hero.nodes[0].childImageSharp.fluid.src}
         srcSet={data.hero.nodes[0].childImageSharp.fluid.srcSet}
         sizes={data.hero.nodes[0].childImageSharp.fluid.sizes}
+        alt="Zdjęcie gabinetu Skin Balance"
       />
 
       <Section topAligned>
@@ -48,6 +49,7 @@ const AboutPage = ({ data }) => {
             src={data.about.nodes[0].childImageSharp.fluid.src}
             srcSet={data.about.nodes[0].childImageSharp.fluid.srcSet}
             sizes={data.about.nodes[0].childImageSharp.fluid.sizes}
+            alt="Katarzyna Gierczyk - dyplomowany kosmetolog"
           />
           <Caption />
         </div>

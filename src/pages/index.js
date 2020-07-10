@@ -1,5 +1,5 @@
 import React from "react";
-import { graphql } from "gatsby";
+import { graphql, Link } from "gatsby";
 import styled from "styled-components";
 import Layout from "../components/Layout";
 import Caption from "../components/Caption";
@@ -105,7 +105,6 @@ const SliderWrapper = styled.div`
 `;
 
 const IndexPage = ({ data }) => {
-  console.log(data);
   return (
     <Layout>
       <SliderWrapper>
@@ -114,16 +113,19 @@ const IndexPage = ({ data }) => {
             src={data.slider.nodes[0].childImageSharp.fluid.src}
             srcSet={data.slider.nodes[0].childImageSharp.fluid.srcSet}
             sizes={data.slider.nodes[0].childImageSharp.fluid.sizes}
+            alt="Butelki z kosmetykami"
           />
           <img
             src={data.slider.nodes[1].childImageSharp.fluid.src}
             srcSet={data.slider.nodes[1].childImageSharp.fluid.srcSet}
             sizes={data.slider.nodes[1].childImageSharp.fluid.sizes}
+            alt="Ampułki z preparatem"
           />
           <img
             src={data.slider.nodes[2].childImageSharp.fluid.src}
             srcSet={data.slider.nodes[2].childImageSharp.fluid.srcSet}
             sizes={data.slider.nodes[2].childImageSharp.fluid.sizes}
+            alt="Kobieca twarz podczas masażu"
           />
         </Carousel>
       </SliderWrapper>
@@ -143,6 +145,8 @@ const IndexPage = ({ data }) => {
               src={img.node.childImageSharp.fluid.src}
               srcSet={img.node.childImageSharp.fluid.srcSet}
               sizes={img.node.childImageSharp.fluid.sizes}
+              key={img.node.childImageSharp.fluid.src}
+              alt="Logo firmowe"
             />
           ))}
         </LogosWrapper>
@@ -153,26 +157,27 @@ const IndexPage = ({ data }) => {
           src={data.img.nodes[0].childImageSharp.fluid.src}
           srcSet={data.img.nodes[0].childImageSharp.fluid.srcSet}
           sizes={data.img.nodes[0].childImageSharp.fluid.sizes}
+          alt="Kobieta z maseczką na twarzy podczas zabiegu"
         />
         <TreatmentsGrid>
-          <a>
+          <Link to="/">
             <h3>Zabiegi pielęgnacyjne</h3>
             <span>
               Zabiegi aplikacyjne z masażami autorskimi Biologique Recherche.
             </span>
-          </a>
-          <a>
+          </Link>
+          <Link to="/">
             <h3>Kobido</h3>
             <span>Masaż twarzy z naturalnym efektem liftingującym.</span>
-          </a>
-          <a>
+          </Link>
+          <Link to="/">
             <h3>Terapie specjalistyczne</h3>
             <span>Procedury zabiegowe z wykorzystaniem maszyn.</span>
-          </a>
-          <a>
+          </Link>
+          <Link to="/">
             <h3>ICOONE</h3>
             <span>Przełom w modelowaniu sylwetki.</span>
-          </a>
+          </Link>
         </TreatmentsGrid>
       </Section>
 
@@ -197,7 +202,7 @@ const IndexPage = ({ data }) => {
           src={data.img.nodes[3].childImageSharp.fluid.src}
           srcSet={data.img.nodes[3].childImageSharp.fluid.srcSet}
           sizes={data.img.nodes[3].childImageSharp.fluid.sizes}
-          alt=""
+          alt="Katarzyna Gierczyk - dylomowany kosmetolog"
         />
       </Section>
 
@@ -219,13 +224,13 @@ const IndexPage = ({ data }) => {
             src={data.img.nodes[1].childImageSharp.fluid.src}
             srcSet={data.img.nodes[1].childImageSharp.fluid.srcSet}
             sizes={data.img.nodes[1].childImageSharp.fluid.sizes}
-            alt=""
+            alt="Kobiece dłonie na tle liści"
           />
           <StyledNestedImage
             src={data.img.nodes[2].childImageSharp.fluid.src}
             srcSet={data.img.nodes[2].childImageSharp.fluid.srcSet}
             sizes={data.img.nodes[2].childImageSharp.fluid.sizes}
-            alt=""
+            alt="Szklane butelki z mydłem"
           />
         </ImageWrapper>
       </Section>

@@ -15,6 +15,7 @@ const ContactPage = () => (
   <Layout>
     <div class="map">
       <iframe
+        title="Google Maps Localization"
         width="100%"
         height="450"
         frameborder="0"

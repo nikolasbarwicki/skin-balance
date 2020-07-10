@@ -28,7 +28,6 @@ const Header = () => {
       }
     }
   `);
-  console.log(data);
   return (
     <HeaderWrapper>
       <Link to="/">

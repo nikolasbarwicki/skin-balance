@@ -1,7 +1,6 @@
 import React from "react";
 import { useStaticQuery, graphql } from "gatsby";
 import styled from "styled-components";
-import Img from "gatsby-image";
 
 const Grid = styled.section`
   display: grid;
@@ -60,8 +59,6 @@ const Gallery = () => {
     }
   `);
 
-  console.log(data);
-
   return (
     <Wrapper>
       <HeaderWrapper>
@@ -73,32 +70,10 @@ const Gallery = () => {
           <StyledImg
             src={node.childImageSharp.fluid.src}
             gridArea={`area-${index + 1}`}
+            alt="Zdjęcie wnętrza gabinetu"
+            key={node.base}
           />
         ))}
-        {/* <StyledImg
-          fluid={data.allFile.edges[0].node.childImageSharp.fluid}
-          gridArea="0"
-        />
-        <StyledImg
-          fluid={data.allFile.edges[1].node.childImageSharp.fluid}
-          gridArea="1"
-        />
-        <StyledImg
-          fluid={data.allFile.edges[2].node.childImageSharp.fluid}
-          gridArea="2"
-        />
-        <StyledImg
-          fluid={data.allFile.edges[3].node.childImageSharp.fluid}
-          gridArea="3"
-        />
-        <StyledImg
-          fluid={data.allFile.edges[4].node.childImageSharp.fluid}
-          gridArea="4"
-        />
-        <StyledImg
-          fluid={data.allFile.edges[5].node.childImageSharp.fluid}
-          gridArea="5"
-        /> */}
       </Grid>
     </Wrapper>
   );

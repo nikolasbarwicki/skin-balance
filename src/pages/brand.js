@@ -18,6 +18,7 @@ const BrandPage = ({ data }) => {
           src={data.allFile.nodes[0].childImageSharp.fluid.src}
           srcSet={data.allFile.nodes[0].childImageSharp.fluid.srcSet}
           sizes={data.allFile.nodes[0].childImageSharp.fluid.sizes}
+          alt="Logo Biologique Recherche"
         />
       </Hero>
 
@@ -26,6 +27,7 @@ const BrandPage = ({ data }) => {
           src={data.allFile.nodes[4].childImageSharp.fluid.src}
           srcSet={data.allFile.nodes[4].childImageSharp.fluid.srcSet}
           sizes={data.allFile.nodes[4].childImageSharp.fluid.sizes}
+          alt="Zarys budynku"
         />
         <div>
           <h2>40 lat pasji w pielęgnacji urody...</h2>
@@ -62,6 +64,7 @@ const BrandPage = ({ data }) => {
           src={data.allFile.nodes[2].childImageSharp.fluid.src}
           srcSet={data.allFile.nodes[2].childImageSharp.fluid.srcSet}
           sizes={data.allFile.nodes[2].childImageSharp.fluid.sizes}
+          alt="Twarz kobiety podczas zabiegu"
         />
       </Section>
 
@@ -70,6 +73,7 @@ const BrandPage = ({ data }) => {
           src={data.allFile.nodes[5].childImageSharp.fluid.src}
           srcSet={data.allFile.nodes[5].childImageSharp.fluid.srcSet}
           sizes={data.allFile.nodes[5].childImageSharp.fluid.sizes}
+          alt="Ampułki preparatów"
         />
         <div>
           <h2>Naturalne składniki i harmonia</h2>
@@ -104,6 +108,7 @@ const BrandPage = ({ data }) => {
           src={data.allFile.nodes[3].childImageSharp.fluid.src}
           srcSet={data.allFile.nodes[3].childImageSharp.fluid.srcSet}
           sizes={data.allFile.nodes[3].childImageSharp.fluid.sizes}
+          alt="Zarząd Biologique Recherche"
         />
       </Section>
 
@@ -112,6 +117,7 @@ const BrandPage = ({ data }) => {
           src={data.allFile.nodes[1].childImageSharp.fluid.src}
           srcSet={data.allFile.nodes[1].childImageSharp.fluid.srcSet}
           sizes={data.allFile.nodes[1].childImageSharp.fluid.sizes}
+          alt="Nagrody przyznane Biologique Recherche"
         />
         <div>
           <h2>Nasze nagrody</h2>
