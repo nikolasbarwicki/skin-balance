@@ -7,6 +7,7 @@ import Button from "../components/Button";
 import Section from "../components/Section";
 import Carousel from "@brainhubeu/react-carousel";
 import "@brainhubeu/react-carousel/lib/style.css";
+import SEO from "../components/SEO";
 
 const LogosWrapper = styled.div`
   display: grid;
@@ -159,22 +160,23 @@ const IndexPage = ({ data }) => {
           sizes={data.img.nodes[0].childImageSharp.fluid.sizes}
           alt="Kobieta z maseczką na twarzy podczas zabiegu"
         />
+
         <TreatmentsGrid>
-          <Link to="/">
+          <Link to="/treatments#zabiegi-pielegnacyjne">
             <h3>Zabiegi pielęgnacyjne</h3>
             <span>
               Zabiegi aplikacyjne z masażami autorskimi Biologique Recherche.
             </span>
           </Link>
-          <Link to="/">
+          <Link to="/treatments#kobido">
             <h3>Kobido</h3>
             <span>Masaż twarzy z naturalnym efektem liftingującym.</span>
           </Link>
-          <Link to="/">
+          <Link to="/treatments#terapie-specjalistyczne">
             <h3>Terapie specjalistyczne</h3>
             <span>Procedury zabiegowe z wykorzystaniem maszyn.</span>
           </Link>
-          <Link to="/">
+          <Link to="/treatments#icoone">
             <h3>ICOONE</h3>
             <span>Przełom w modelowaniu sylwetki.</span>
           </Link>

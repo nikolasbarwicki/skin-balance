@@ -35,6 +35,7 @@ const Header = () => {
           src={data.file.childImageSharp.fluid.src}
           srcSet={data.file.childImageSharp.fluid.srcSet}
           sizes={data.file.childImageSharp.fluid.sizes}
+          alt="Skin Balance Logo"
         />
       </Link>
 

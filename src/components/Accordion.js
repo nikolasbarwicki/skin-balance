@@ -129,7 +129,16 @@ const Accordion = () => {
       {parsedData.map((el, index) => (
         <AccordionWrapper>
           <Container>
-            <h2>{headings[index]}</h2>
+            <h2
+              id={headings[index]
+                .toLowerCase()
+                .split(" ")
+                .join("-")
+                .normalize("NFD")
+                .replace(/[\u0300-\u036f]/g, "")}
+            >
+              {headings[index]}
+            </h2>
             <div>
               {el.nodes.map(item => (
                 <AccordionItem

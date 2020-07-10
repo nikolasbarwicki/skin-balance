@@ -2,6 +2,8 @@ module.exports = {
   siteMetadata: {
     title: `Skin Balance - Katrzyna Gierczyk`,
     description: `Pozwól wprowadzić się w świat najlepszych światowych marek łączących tradycyjną francuską szkołę ze współczesną technologią.`,
+    url: "https://skinbalance.pl",
+    image: "/logo.jpg",
     author: `Nikolas Barwicki`,
   },
   plugins: [
@@ -53,6 +55,12 @@ module.exports = {
       resolve: `gatsby-plugin-mdx`,
       options: {
         extensions: [`.mdx`, `.md`],
+      },
+    },
+    {
+      resolve: "gatsby-plugin-html-attributes",
+      options: {
+        lang: "pl",
       },
     },
     // this (optional) plugin enables Progressive Web App + Offline functionality
