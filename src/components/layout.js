@@ -4,7 +4,7 @@ import styled from "styled-components";
 import GlobalStyles from "../assets/styles/GlobalStyles";
 import theme from "../assets/themes/theme";
 
-import Header from "../components/Header";
+import Header from "./Header";
 import Footer from "../components/Footer";
 import SEO from "../components/SEO";
 

@@ -1,5 +1,7 @@
 import React from "react";
 import { graphql } from "gatsby";
+import Img from "gatsby-image";
+
 import styled from "styled-components";
 import Section from "../components/Section";
 import Layout from "../components/Layout";
@@ -11,23 +13,21 @@ const Hero = styled.div`
 `;
 
 const BrandPage = ({ data }) => {
+  console.log(data);
+
   return (
     <Layout>
       <Hero>
-        <img
-          src={data.allFile.nodes[0].childImageSharp.fluid.src}
-          srcSet={data.allFile.nodes[0].childImageSharp.fluid.srcSet}
-          sizes={data.allFile.nodes[0].childImageSharp.fluid.sizes}
+        <Img
+          fixed={data.logo.childImageSharp.fixed}
           alt="Logo Biologique Recherche"
         />
       </Hero>
 
       <Section padding="3">
-        <img
-          src={data.allFile.nodes[4].childImageSharp.fluid.src}
-          srcSet={data.allFile.nodes[4].childImageSharp.fluid.srcSet}
-          sizes={data.allFile.nodes[4].childImageSharp.fluid.sizes}
-          alt="Zarys budynku"
+        <Img
+          fixed={data.brand1.childImageSharp.fixed}
+          alt="Zarząd Biologique Recherche"
         />
         <div>
           <h2>40 lat pasji w pielęgnacji urody...</h2>
@@ -60,19 +60,15 @@ const BrandPage = ({ data }) => {
             masaży twarzy i ciała.
           </p>
         </div>
-        <img
-          src={data.allFile.nodes[2].childImageSharp.fluid.src}
-          srcSet={data.allFile.nodes[2].childImageSharp.fluid.srcSet}
-          sizes={data.allFile.nodes[2].childImageSharp.fluid.sizes}
+        <Img
+          fixed={data.brand2.childImageSharp.fixed}
           alt="Twarz kobiety podczas zabiegu"
         />
       </Section>
 
       <Section padding="3">
-        <img
-          src={data.allFile.nodes[5].childImageSharp.fluid.src}
-          srcSet={data.allFile.nodes[5].childImageSharp.fluid.srcSet}
-          sizes={data.allFile.nodes[5].childImageSharp.fluid.sizes}
+        <Img
+          fixed={data.brand3.childImageSharp.fixed}
           alt="Ampułki preparatów"
         />
         <div>
@@ -104,21 +100,15 @@ const BrandPage = ({ data }) => {
             Ambasada Urody, mieści się przy Polach Elizejskich w Paryżu.
           </p>
         </div>
-        <img
-          src={data.allFile.nodes[3].childImageSharp.fluid.src}
-          srcSet={data.allFile.nodes[3].childImageSharp.fluid.srcSet}
-          sizes={data.allFile.nodes[3].childImageSharp.fluid.sizes}
-          alt="Zarząd Biologique Recherche"
-        />
+        <Img fixed={data.brand4.childImageSharp.fixed} alt="Zarys budynku" />
       </Section>
 
       <Section padding="3">
-        <img
-          src={data.allFile.nodes[1].childImageSharp.fluid.src}
-          srcSet={data.allFile.nodes[1].childImageSharp.fluid.srcSet}
-          sizes={data.allFile.nodes[1].childImageSharp.fluid.sizes}
+        <Img
+          fixed={data.brand5.childImageSharp.fixed}
           alt="Nagrody przyznane Biologique Recherche"
         />
+
         <div>
           <h2>Nasze nagrody</h2>
           <p>
@@ -143,14 +133,45 @@ const BrandPage = ({ data }) => {
 
 export const query = graphql`
   {
-    allFile(filter: { absolutePath: { regex: "/brand/" } }) {
-      nodes {
-        childImageSharp {
-          fluid(jpegQuality: 90, maxWidth: 400) {
-            sizes
-            src
-            srcSet
-          }
+    logo: file(name: { eq: "01-biologique-logo" }) {
+      childImageSharp {
+        fixed(width: 450, quality: 90) {
+          ...GatsbyImageSharpFixed_withWebp
+        }
+      }
+    }
+    brand1: file(name: { eq: "section-brand-1" }) {
+      childImageSharp {
+        fixed(width: 400, quality: 80) {
+          ...GatsbyImageSharpFixed_withWebp
+        }
+      }
+    }
+    brand2: file(name: { eq: "section-brand-2" }) {
+      childImageSharp {
+        fixed(width: 400, quality: 80) {
+          ...GatsbyImageSharpFixed_withWebp
+        }
+      }
+    }
+    brand3: file(name: { eq: "section-brand-3" }) {
+      childImageSharp {
+        fixed(width: 400, quality: 80) {
+          ...GatsbyImageSharpFixed_withWebp
+        }
+      }
+    }
+    brand4: file(name: { eq: "section-brand-4" }) {
+      childImageSharp {
+        fixed(width: 400, quality: 80) {
+          ...GatsbyImageSharpFixed_withWebp
+        }
+      }
+    }
+    brand5: file(name: { eq: "section-brand-5" }) {
+      childImageSharp {
+        fixed(width: 400, quality: 80) {
+          ...GatsbyImageSharpFixed_withWebp
         }
       }
     }

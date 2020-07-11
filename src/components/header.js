@@ -1,16 +1,18 @@
 import React from "react";
 import { useStaticQuery, graphql, Link } from "gatsby";
+import Img from "gatsby-image";
 import styled from "styled-components";
+
 import Navigation from "./Navigation";
 
-const HeaderWrapper = styled.div`
+const Wrapper = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
   margin-bottom: 4rem;
 `;
 
-const StyledLogo = styled.img`
+const Logo = styled(Img)`
   margin: 3rem;
 `;
 
@@ -19,28 +21,20 @@ const Header = () => {
     {
       file(name: { eq: "logo" }) {
         childImageSharp {
-          fluid(maxWidth: 400) {
-            src
-            srcSet
-            sizes
+          fixed(width: 400, quality: 95) {
+            ...GatsbyImageSharpFixed
           }
         }
       }
     }
   `);
   return (
-    <HeaderWrapper>
+    <Wrapper>
       <Link to="/">
-        <StyledLogo
-          src={data.file.childImageSharp.fluid.src}
-          srcSet={data.file.childImageSharp.fluid.srcSet}
-          sizes={data.file.childImageSharp.fluid.sizes}
-          alt="Skin Balance Logo"
-        />
+        <Logo fixed={data.file.childImageSharp.fixed} alt="Skin Balance Logo" />
       </Link>
-
       <Navigation />
-    </HeaderWrapper>
+    </Wrapper>
   );
 };
 

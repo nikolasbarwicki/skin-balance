@@ -1,5 +1,6 @@
 import React from "react";
 import { useStaticQuery, graphql } from "gatsby";
+import Img from "gatsby-image";
 import styled from "styled-components";
 
 import { device } from "../assets/styles/device";
@@ -35,7 +36,7 @@ const Wrapper = styled.div`
   background-color: ${props => props.theme.colors.gray};
 `;
 
-const StyledImg = styled.img`
+const StyledImg = styled(Img)`
   height: auto;
   width: 100%;
   object-fit: cover;
@@ -56,25 +57,20 @@ const Heading = styled.h2`
 
 const Gallery = () => {
   const data = useStaticQuery(graphql`
-    query MyQuery {
+    {
       allFile(filter: { name: { regex: "/gallery/" } }) {
-        edges {
-          node {
-            base
-            childImageSharp {
-              fluid {
-                aspectRatio
-                base64
-                sizes
-                src
-                srcSet
-              }
+        nodes {
+          childImageSharp {
+            fluid(quality: 100, maxWidth: 600) {
+              ...GatsbyImageSharpFluid_withWebp
             }
           }
         }
       }
     }
   `);
+
+  console.log(data);
 
   return (
     <Wrapper>
@@ -83,12 +79,12 @@ const Gallery = () => {
       </HeaderWrapper>
 
       <Grid>
-        {data.allFile.edges.map(({ node }, index) => (
+        {data.allFile.nodes.map(({ childImageSharp }, index) => (
           <GalleryItem gridArea={`area-${index + 1}`}>
             <StyledImg
-              src={node.childImageSharp.fluid.src}
+              fluid={childImageSharp.fluid}
               alt="Zdjęcie wnętrza gabinetu"
-              key={node.base}
+              key={childImageSharp.base}
             />
           </GalleryItem>
         ))}

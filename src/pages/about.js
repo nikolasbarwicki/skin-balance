@@ -1,12 +1,14 @@
 import React from "react";
 import { graphql } from "gatsby";
+import Img from "gatsby-image";
 import styled from "styled-components";
+
 import Layout from "../components/Layout";
 import Section from "../components/Section";
 import Gallery from "../components/Gallery";
 import Caption from "../components/Caption";
 
-const Hero = styled.img`
+const Hero = styled(Img)`
   display: flex;
   width: 100vw;
   height: 30rem;
@@ -20,7 +22,7 @@ const InnerWrapper = styled.div`
   width: 80%;
 `;
 
-const Img = styled.img`
+const StyledImg = styled(Img)`
   height: auto;
   width: 100%;
   object-fit: cover;
@@ -32,9 +34,7 @@ const AboutPage = ({ data }) => {
   return (
     <Layout>
       <Hero
-        src={data.hero.nodes[0].childImageSharp.fluid.src}
-        srcSet={data.hero.nodes[0].childImageSharp.fluid.srcSet}
-        sizes={data.hero.nodes[0].childImageSharp.fluid.sizes}
+        fluid={data.file.childImageSharp.fluid}
         alt="Zdjęcie gabinetu Skin Balance"
       />
 
@@ -56,10 +56,8 @@ const AboutPage = ({ data }) => {
           </p>
         </div>
         <InnerWrapper>
-          <Img
-            src={data.about.nodes[0].childImageSharp.fluid.src}
-            srcSet={data.about.nodes[0].childImageSharp.fluid.srcSet}
-            sizes={data.about.nodes[0].childImageSharp.fluid.sizes}
+          <StyledImg
+            fluid={data.about.childImageSharp.fluid}
             alt="Katarzyna Gierczyk - dyplomowany kosmetolog"
           />
           <Caption />
@@ -73,36 +71,17 @@ const AboutPage = ({ data }) => {
 
 export const query = graphql`
   {
-    hero: allFile(filter: { name: { eq: "about-1" } }) {
-      nodes {
-        childImageSharp {
-          fluid(jpegQuality: 90, maxHeight: 300) {
-            sizes
-            src
-            srcSet
-          }
+    file(name: { eq: "about-1" }) {
+      childImageSharp {
+        fluid(maxHeight: 500, quality: 80) {
+          ...GatsbyImageSharpFluid_withWebp
         }
       }
     }
-    about: allFile(filter: { name: { eq: "about-2" } }) {
-      nodes {
-        childImageSharp {
-          fluid(jpegQuality: 100, maxWidth: 465) {
-            sizes
-            src
-            srcSet
-          }
-        }
-      }
-    }
-    gallery: allFile(filter: { name: { regex: "/gallery/" } }) {
-      nodes {
-        childImageSharp {
-          fluid(jpegQuality: 100, maxWidth: 465) {
-            sizes
-            src
-            srcSet
-          }
+    about: file(name: { eq: "about-2" }) {
+      childImageSharp {
+        fluid(jpegQuality: 100, maxWidth: 465) {
+          ...GatsbyImageSharpFluid_withWebp
         }
       }
     }

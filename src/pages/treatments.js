@@ -1,4 +1,7 @@
 import React from "react";
+import { graphql } from "gatsby";
+import Img from "gatsby-image";
+
 import styled from "styled-components";
 import Layout from "../components/Layout";
 import Section from "../components/Section";
@@ -9,7 +12,7 @@ const Header = styled.div`
   justify-self: start;
 `;
 
-const Hero = styled.img`
+const Hero = styled(Img)`
   display: flex;
   width: 100vw;
   height: 30rem;
@@ -18,14 +21,10 @@ const Hero = styled.img`
   margin: 4rem 0;
 `;
 
-const ContentWrapper = styled.div``;
-
 const TreatmentsPage = ({ data }) => (
   <Layout>
     <Hero
-      src={data.allFile.nodes[0].childImageSharp.fluid.src}
-      srcSet={data.allFile.nodes[0].childImageSharp.fluid.srcSet}
-      sizes={data.allFile.nodes[0].childImageSharp.fluid.sizes}
+      fluid={data.file.childImageSharp.fluid}
       alt="Twarz kobiety masowana dłońmi"
     />
     <Section topHeader>
@@ -53,14 +52,10 @@ const TreatmentsPage = ({ data }) => (
 
 export const query = graphql`
   {
-    allFile(filter: { name: { eq: "prices-1" } }) {
-      nodes {
-        childImageSharp {
-          fluid(jpegQuality: 90, maxHeight: 300) {
-            sizes
-            src
-            srcSet
-          }
+    file(name: { eq: "prices-1" }) {
+      childImageSharp {
+        fluid(maxHeight: 300, pngQuality: 90) {
+          ...GatsbyImageSharpFluid_withWebp
         }
       }
     }
