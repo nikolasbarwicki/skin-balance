@@ -2,12 +2,19 @@ import React from "react";
 import styled from "styled-components";
 import { FaInstagram, FaFacebookSquare } from "react-icons/fa";
 
+import { device } from "../assets/styles/device";
+
 const FooterWrapper = styled.footer`
   background-color: ${props => props.theme.colors.gray};
   display: flex;
   justify-content: center;
   align-items: center;
   padding: 5rem;
+
+  @media ${device.mobile} {
+    flex-direction: column;
+    padding: 3rem;
+  }
 `;
 
 const ListWrapper = styled.ul`
@@ -15,6 +22,8 @@ const ListWrapper = styled.ul`
   text-align: center;
   width: 25rem;
   line-height: 2.2;
+
+  margin: 1.5rem 0;
 `;
 
 const IconWrapper = styled(ListWrapper)`
@@ -39,15 +48,25 @@ const Footer = () => {
         <li>52-234 Wrocław</li>
       </ListWrapper>
       <IconWrapper>
-        <a href="https://instagram.com/skinbalance.katarzynagierczyk">
-          <FaInstagram
-            size="3rem"
-            style={{ verticalAlign: "middle", marginRight: "3rem" }}
-          />
-        </a>
-        <a href="https://www.facebook.com/SkinBalanceKatarzynaGierczyk/">
-          <FaFacebookSquare size="3rem" style={{ verticalAlign: "middle" }} />
-        </a>
+        <li>
+          <a
+            href="https://instagram.com/skinbalance.katarzynagierczyk"
+            aria-label="Instagram Skin Balance"
+          >
+            <FaInstagram
+              size="3rem"
+              style={{ verticalAlign: "middle", marginRight: "3rem" }}
+            />
+          </a>
+        </li>
+        <li>
+          <a
+            href="https://www.facebook.com/SkinBalanceKatarzynaGierczyk/"
+            aria-label="Facebook Skin Balance"
+          >
+            <FaFacebookSquare size="3rem" style={{ verticalAlign: "middle" }} />
+          </a>
+        </li>
       </IconWrapper>
     </FooterWrapper>
   );

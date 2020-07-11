@@ -146,7 +146,7 @@ export const query = graphql`
     allFile(filter: { absolutePath: { regex: "/brand/" } }) {
       nodes {
         childImageSharp {
-          fluid(jpegQuality: 90, maxWidth: 465) {
+          fluid(jpegQuality: 90, maxWidth: 400) {
             sizes
             src
             srcSet

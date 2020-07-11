@@ -7,16 +7,28 @@ import Button from "../components/Button";
 import Section from "../components/Section";
 import Carousel from "@brainhubeu/react-carousel";
 import "@brainhubeu/react-carousel/lib/style.css";
-import SEO from "../components/SEO";
+
+import { device } from "../assets/styles/device";
 
 const LogosWrapper = styled.div`
   display: grid;
   grid-template-rows: repeat(3, min-content);
   grid-gap: 2rem;
+
+  @media ${device.mobile} {
+    margin-top: 5rem;
+  }
 `;
 
 const StyledImage = styled.img`
   width: 50vw;
+  min-height: 100%;
+  object-fit: cover;
+
+  @media ${device.tablet} {
+    width: 100vw;
+    height: 30vh;
+  }
 `;
 
 const TreatmentsGrid = styled.div`
@@ -31,6 +43,17 @@ const TreatmentsGrid = styled.div`
   align-items: stretch;
   justify-items: stretch;
 
+  @media ${device.desktop} {
+  }
+  @media ${device.laptop} {
+  }
+  @media ${device.tablet} {
+  }
+
+  @media ${device.mobile} {
+    grid-template-columns: 1fr;
+  }
+
   a {
     background-color: white;
     display: flex;
@@ -42,6 +65,10 @@ const TreatmentsGrid = styled.div`
     -moz-transition: background-color 0.2s ease-out;
     -o-transition: background-color 0.2s ease-out;
     transition: background-color 0.2s ease-out;
+
+    @media ${device.tablet} {
+      padding: 4rem;
+    }
 
     :hover {
       background-color: #f8f8f8;
@@ -80,6 +107,14 @@ const AboutSectionWrapper = styled.div`
   background-color: white;
   padding: 8rem;
   margin: 1rem;
+
+  @media ${device.laptop} {
+    padding: 4rem;
+  }
+
+  @media ${device.mobile} {
+    padding: 4rem;
+  }
 `;
 
 const StyledBr = styled.hr`
@@ -99,17 +134,52 @@ const ImageWrapper = styled.div`
   height: 100%;
   width: 100%;
   padding-left: 4rem;
+
+  @media ${device.tablet} {
+    display: none;
+  }
+
+  @media ${device.mobile} {
+    display: none;
+  }
 `;
 
 const SliderWrapper = styled.div`
   width: 100vw;
 `;
 
+const StyledImg = styled.img`
+  @media ${device.laptop} {
+    height: auto;
+    width: 100%;
+  }
+
+  @media ${device.tablet} {
+    display: none;
+  }
+
+  @media ${device.mobile} {
+    display: none;
+  }
+`;
+
+const GridItem = styled(Link)`
+  @media ${device.mobile} {
+    padding: 4rem 0;
+  }
+`;
+
 const IndexPage = ({ data }) => {
   return (
     <Layout>
       <SliderWrapper>
-        <Carousel autoPlay={5000} animationSpeed={1000} infinite centered dots>
+        <Carousel
+          autoPlay={5000}
+          animationSpeed={1000}
+          infinite
+          centered
+          draggable={false}
+        >
           <img
             src={data.slider.nodes[0].childImageSharp.fluid.src}
             srcSet={data.slider.nodes[0].childImageSharp.fluid.srcSet}
@@ -153,7 +223,7 @@ const IndexPage = ({ data }) => {
         </LogosWrapper>
       </Section>
 
-      <Section fullWidth>
+      <Section fullWidth padding="0">
         <StyledImage
           src={data.img.nodes[0].childImageSharp.fluid.src}
           srcSet={data.img.nodes[0].childImageSharp.fluid.srcSet}
@@ -162,24 +232,24 @@ const IndexPage = ({ data }) => {
         />
 
         <TreatmentsGrid>
-          <Link to="/treatments#zabiegi-pielegnacyjne">
+          <GridItem to="/treatments#zabiegi-pielegnacyjne">
             <h3>Zabiegi pielęgnacyjne</h3>
             <span>
               Zabiegi aplikacyjne z masażami autorskimi Biologique Recherche.
             </span>
-          </Link>
-          <Link to="/treatments#kobido">
+          </GridItem>
+          <GridItem to="/treatments#kobido">
             <h3>Kobido</h3>
             <span>Masaż twarzy z naturalnym efektem liftingującym.</span>
-          </Link>
-          <Link to="/treatments#terapie-specjalistyczne">
+          </GridItem>
+          <GridItem to="/treatments#terapie-specjalistyczne">
             <h3>Terapie specjalistyczne</h3>
             <span>Procedury zabiegowe z wykorzystaniem maszyn.</span>
-          </Link>
-          <Link to="/treatments#icoone">
+          </GridItem>
+          <GridItem to="/treatments#icoone">
             <h3>ICOONE</h3>
             <span>Przełom w modelowaniu sylwetki.</span>
-          </Link>
+          </GridItem>
         </TreatmentsGrid>
       </Section>
 
@@ -200,7 +270,8 @@ const IndexPage = ({ data }) => {
           <Button>dowiedz się więcej</Button>
         </AboutSectionWrapper>
 
-        <img
+        <StyledImg
+          mobileHide
           src={data.img.nodes[3].childImageSharp.fluid.src}
           srcSet={data.img.nodes[3].childImageSharp.fluid.srcSet}
           sizes={data.img.nodes[3].childImageSharp.fluid.sizes}

@@ -2,17 +2,32 @@ import React from "react";
 import { useStaticQuery, graphql } from "gatsby";
 import styled from "styled-components";
 
+import { device } from "../assets/styles/device";
+
 const Grid = styled.section`
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  grid-template-rows: repeat(2, 1fr);
+  grid-template-rows: repeat(2, auto);
   grid-gap: 2rem;
-  width: min-content;
+  width: 80vw;
   margin: 0 auto;
 
   grid-template-areas:
     "area-1 area-2 area-3 area-4"
     "area-5 area-5 area-6 area-6";
+
+  @media ${device.tablet} {
+    grid-template-areas:
+      "area-1 area-2"
+      "area-5 area-5"
+      "area-3 area-4"
+      "area-6 area-6";
+    grid-template-columns: repeat(2, 1fr);
+  }
+`;
+
+const GalleryItem = styled.figure`
+  grid-area: ${props => props.gridArea};
 `;
 
 const Wrapper = styled.div`
@@ -21,7 +36,9 @@ const Wrapper = styled.div`
 `;
 
 const StyledImg = styled.img`
-  grid-area: ${props => props.gridArea};
+  height: auto;
+  width: 100%;
+  object-fit: cover;
 `;
 
 const HeaderWrapper = styled.div`
@@ -29,8 +46,8 @@ const HeaderWrapper = styled.div`
   width: 100vw;
   padding: 4rem 0 2rem;
   grid-template-columns:
-    [margin-start] 1fr [content-start] minmax(32rem, 114rem)
-    [content-end] 1fr [margin-end];
+    [margin-start] minmax(6rem, 1fr) [content-start] minmax(32rem, 114rem)
+    [content-end] minmax(6rem, 1fr) [margin-end];
 `;
 
 const Heading = styled.h2`
@@ -67,12 +84,13 @@ const Gallery = () => {
 
       <Grid>
         {data.allFile.edges.map(({ node }, index) => (
-          <StyledImg
-            src={node.childImageSharp.fluid.src}
-            gridArea={`area-${index + 1}`}
-            alt="Zdjęcie wnętrza gabinetu"
-            key={node.base}
-          />
+          <GalleryItem gridArea={`area-${index + 1}`}>
+            <StyledImg
+              src={node.childImageSharp.fluid.src}
+              alt="Zdjęcie wnętrza gabinetu"
+              key={node.base}
+            />
+          </GalleryItem>
         ))}
       </Grid>
     </Wrapper>

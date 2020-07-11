@@ -1,6 +1,8 @@
 import React, { useState, useRef } from "react";
 import styled from "styled-components";
 
+import { device } from "../assets/styles/device";
+
 const ItemWrapper = styled.li`
   grid-column: 2 / 3;
   cursor: pointer;
@@ -8,11 +10,19 @@ const ItemWrapper = styled.li`
   padding: 1.5rem 4rem;
   border-bottom: 1px solid ${props => props.theme.colors.grayBorders};
   transition: text-shadow 0.3s;
+
+  @media ${device.tablet} {
+    padding: 1.5rem 3rem;
+  }
+
+  @media ${device.mobile} {
+    padding: 1.5rem 3rem;
+  }
 `;
 
 const Heading = styled.div`
-  display: flex;
-  justify-content: space-between;
+  display: grid;
+  grid: 1fr / auto 10rem;
   text-shadow: ${props =>
     props.isActive ? null : "0 0 0.65px #333, 0 0 0.65px #333"};
 

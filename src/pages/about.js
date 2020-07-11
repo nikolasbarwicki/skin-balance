@@ -15,6 +15,17 @@ const Hero = styled.img`
   margin: 4rem 0;
 `;
 
+const InnerWrapper = styled.div`
+  margin-top: 5rem;
+  width: 80%;
+`;
+
+const Img = styled.img`
+  height: auto;
+  width: 100%;
+  object-fit: cover;
+`;
+
 const AboutPage = ({ data }) => {
   console.log(data);
 
@@ -44,15 +55,15 @@ const AboutPage = ({ data }) => {
             gdzie odnajdzie równowagę piękna.
           </p>
         </div>
-        <div>
-          <img
+        <InnerWrapper>
+          <Img
             src={data.about.nodes[0].childImageSharp.fluid.src}
             srcSet={data.about.nodes[0].childImageSharp.fluid.srcSet}
             sizes={data.about.nodes[0].childImageSharp.fluid.sizes}
             alt="Katarzyna Gierczyk - dyplomowany kosmetolog"
           />
           <Caption />
-        </div>
+        </InnerWrapper>
       </Section>
 
       <Gallery />

@@ -4,11 +4,21 @@ import Layout from "../components/Layout";
 import Section from "../components/Section";
 import { FaPhoneAlt, FaEnvelope } from "react-icons/fa";
 
+import { device } from "../assets/styles/device";
+
 const ListWrapper = styled.ul`
   height: 8rem;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+
+  @media ${device.tablet} {
+    margin: 8rem 0;
+  }
+
+  /* @media ${device.mobile} {
+    margin: 8rem 0;
+  } */
 `;
 
 const ContactPage = () => (
@@ -26,7 +36,7 @@ const ContactPage = () => (
         allowfullscreen
       ></iframe>
     </div>
-    <Section>
+    <Section padding="4">
       <div>
         <h2>Kontakt</h2>
         <p>

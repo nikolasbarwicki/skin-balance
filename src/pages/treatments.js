@@ -18,17 +18,21 @@ const Hero = styled.img`
   margin: 4rem 0;
 `;
 
+const ContentWrapper = styled.div``;
+
 const TreatmentsPage = ({ data }) => (
   <Layout>
     <Hero
       src={data.allFile.nodes[0].childImageSharp.fluid.src}
       srcSet={data.allFile.nodes[0].childImageSharp.fluid.srcSet}
       sizes={data.allFile.nodes[0].childImageSharp.fluid.sizes}
+      alt="Twarz kobiety masowana dłońmi"
     />
-    <Section>
+    <Section topHeader>
       <Header>
         <h2>Zabiegi</h2>
       </Header>
+
       <p>
         Nasze zabiegi są, w dniu wizyty, indywidualnie dostosowywane do stanu
         Twojej skóry. Ideą gabinetu jest odbudowa skóry, którą rozpoczynamy,

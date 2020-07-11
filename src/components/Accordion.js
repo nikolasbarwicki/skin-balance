@@ -5,7 +5,9 @@ import { MDXRenderer } from "gatsby-plugin-mdx";
 import styled from "styled-components";
 import AccordionItem from "./AccordionItem";
 
-const AccordionWrapper = styled.ul`
+import { device } from "../assets/styles/device";
+
+const AccordionWrapper = styled.div`
   display: grid;
   width: 100%;
   grid-template-columns: 1fr minmax(32rem, 130rem) 1fr;
@@ -17,6 +19,10 @@ const AccordionWrapper = styled.ul`
       border: none;
     }
   }
+
+  @media ${device.tablet} {
+    padding: 2rem 0;
+  }
 `;
 
 const Container = styled.div`
@@ -24,10 +30,20 @@ const Container = styled.div`
   background-color: white;
   padding: 2rem 8rem;
   margin: 1rem 0;
+
+  @media ${device.mobile} {
+    padding: 0;
+  }
 `;
 
 const OuterWrapper = styled.section`
   margin-top: 6rem;
+`;
+
+const Heading = styled.h2`
+  @media ${device.mobile} {
+    padding: 0 4rem;
+  }
 `;
 
 const Accordion = () => {
@@ -129,7 +145,7 @@ const Accordion = () => {
       {parsedData.map((el, index) => (
         <AccordionWrapper>
           <Container>
-            <h2
+            <Heading
               id={headings[index]
                 .toLowerCase()
                 .split(" ")
@@ -138,8 +154,8 @@ const Accordion = () => {
                 .replace(/[\u0300-\u036f]/g, "")}
             >
               {headings[index]}
-            </h2>
-            <div>
+            </Heading>
+            <ul>
               {el.nodes.map(item => (
                 <AccordionItem
                   title={item.frontmatter.title}
@@ -148,7 +164,7 @@ const Accordion = () => {
                   body={<MDXRenderer>{item.body}</MDXRenderer>}
                 />
               ))}
-            </div>
+            </ul>
           </Container>
         </AccordionWrapper>
       ))}
