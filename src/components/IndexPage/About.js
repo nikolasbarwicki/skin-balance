@@ -1,5 +1,5 @@
 import React from "react";
-import { useStaticQuery, graphql } from "gatsby";
+import { useStaticQuery, graphql, Link } from "gatsby";
 import Img from "gatsby-image";
 import styled from "styled-components";
 
@@ -21,6 +21,10 @@ const AboutSectionWrapper = styled.div`
 
   @media ${device.laptop} {
     padding: 4rem;
+  }
+
+  @media ${device.mobile} {
+    padding: 3rem;
   }
 `;
 
@@ -70,11 +74,12 @@ const About = () => {
           poszukuję nowych rozwiązań, łączących aktualną wiedzę z nabytym
           doświadczeniem w profesjonalnej pielęgnacji.
         </p>
-        <Button>dowiedz się więcej</Button>
+        <Link to="/treatments">
+          <Button>dowiedz się więcej</Button>
+        </Link>
       </AboutSectionWrapper>
 
       <StyledImg
-        mobileHide
         fluid={data.file.childImageSharp.fluid}
         alt="Katarzyna Gierczyk - dylomowany kosmetolog"
       />

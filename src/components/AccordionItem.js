@@ -16,7 +16,7 @@ const ItemWrapper = styled.li`
   }
 
   @media ${device.mobile} {
-    padding: 1.5rem 3rem;
+    padding: 1rem 2rem;
   }
 `;
 
@@ -29,6 +29,10 @@ const Heading = styled.div`
   :hover {
     text-shadow: 0 0 0.65px #333, 0 0 0.65px #333;
     transition: text-shadow 0.3s;
+  }
+
+  @media ${device.mobile} {
+    grid: 1fr / auto 5rem;
   }
 `;
 

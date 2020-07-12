@@ -7,6 +7,11 @@ import { device } from "../assets/styles/device";
 const ListWrapper = styled.ul`
   display: flex;
   justify-content: center;
+
+  @media ${device.mobile} {
+    flex-direction: column;
+    text-align: center;
+  }
 `;
 
 const ListItem = styled.li`
@@ -21,7 +26,7 @@ const ListItem = styled.li`
   }
 
   @media ${device.mobile} {
-    margin: 2rem;
+    margin: 0.5rem;
   }
 `;
 

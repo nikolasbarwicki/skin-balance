@@ -44,7 +44,7 @@ const StyledImg = styled(Img)`
 
 const HeaderWrapper = styled.div`
   display: grid;
-  width: 100vw;
+  width: 100%;
   padding: 4rem 0 2rem;
   grid-template-columns:
     [margin-start] minmax(6rem, 1fr) [content-start] minmax(32rem, 114rem)

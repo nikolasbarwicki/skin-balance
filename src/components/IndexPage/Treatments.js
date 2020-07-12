@@ -39,6 +39,10 @@ const Grid = styled.div`
       padding: 4rem;
     }
 
+    @media ${device.tablet} {
+      padding: 2rem;
+    }
+
     :hover {
       background-color: #f8f8f8;
     }

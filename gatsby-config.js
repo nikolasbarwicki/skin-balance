@@ -1,3 +1,7 @@
+require("dotenv").config({
+  path: `.env.${process.env.NODE_ENV}`,
+});
+
 module.exports = {
   siteMetadata: {
     title: `Skin Balance - Katrzyna Gierczyk`,
@@ -7,6 +11,7 @@ module.exports = {
     author: `Nikolas Barwicki`,
   },
   plugins: [
+    `gatsby-plugin-styled-components`,
     `gatsby-plugin-react-helmet`,
     {
       resolve: `gatsby-source-filesystem`,
@@ -29,10 +34,12 @@ module.exports = {
           {
             family: `Montserrat`,
             variants: [`400`, `600`, `700`],
+            subsets: ["latin-ext"],
           },
           {
             family: `Raleway`,
             variants: [`600`],
+            subsets: ["latin-ext"],
           },
         ],
       },
@@ -63,8 +70,8 @@ module.exports = {
         lang: "pl",
       },
     },
-    `gatsby-plugin-netlify`,
     `gatsby-plugin-preact`,
+
     // this (optional) plugin enables Progressive Web App + Offline functionality
     // To learn more, visit: https://gatsby.dev/offline
     // `gatsby-plugin-offline`,

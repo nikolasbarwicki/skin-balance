@@ -2,8 +2,9 @@ import React from "react";
 import { useStaticQuery, graphql, Link } from "gatsby";
 import Img from "gatsby-image";
 import styled from "styled-components";
-
 import Navigation from "./Navigation";
+
+import { device } from "../assets/styles/device";
 
 const Wrapper = styled.div`
   display: flex;
@@ -14,6 +15,11 @@ const Wrapper = styled.div`
 
 const Logo = styled(Img)`
   margin: 3rem;
+  width: 40rem;
+
+  @media ${device.mobile} {
+    width: 80vw;
+  }
 `;
 
 const Header = () => {
@@ -21,8 +27,8 @@ const Header = () => {
     {
       file(name: { eq: "logo" }) {
         childImageSharp {
-          fixed(width: 400, quality: 95) {
-            ...GatsbyImageSharpFixed
+          fluid(maxWidth: 400, quality: 95) {
+            ...GatsbyImageSharpFluid
           }
         }
       }
@@ -31,7 +37,7 @@ const Header = () => {
   return (
     <Wrapper>
       <Link to="/">
-        <Logo fixed={data.file.childImageSharp.fixed} alt="Skin Balance Logo" />
+        <Logo fluid={data.file.childImageSharp.fluid} alt="Skin Balance Logo" />
       </Link>
       <Navigation />
     </Wrapper>

@@ -1,5 +1,5 @@
 import React from "react";
-import { useStaticQuery, graphql } from "gatsby";
+import { useStaticQuery, graphql, Link } from "gatsby";
 import Img from "gatsby-image";
 import styled from "styled-components";
 
@@ -63,7 +63,9 @@ const Prices = () => {
           osiągnąć. Wspólnie decydujemy o idealnej drodze zabiegów
           pielęgnacyjnych dla Ciebie.
         </p>
-        <Button>dowiedz się więcej</Button>
+        <Link to="/treatments">
+          <Button>dowiedz się więcej</Button>
+        </Link>
       </div>
       <ImageWrapper>
         <Img

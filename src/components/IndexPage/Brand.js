@@ -1,5 +1,5 @@
 import React from "react";
-import { useStaticQuery, graphql } from "gatsby";
+import { useStaticQuery, graphql, Link } from "gatsby";
 import Img from "gatsby-image";
 import styled from "styled-components";
 
@@ -54,7 +54,9 @@ const Brand = () => {
           Pozwól wprowadzić się w świat najlepszych światowych marek łączących
           tradycyjną francuską szkołę ze współczesną technologią.
         </p>
-        <Button>dowiedz się więcej</Button>
+        <Link to="/brand">
+          <Button>dowiedz się więcej</Button>
+        </Link>
       </div>
       <Wrapper>
         <Img

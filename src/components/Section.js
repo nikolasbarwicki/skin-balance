@@ -7,12 +7,12 @@ const SectionWrapper = styled.section`
   background-color: ${props =>
     props.grayBackground ? props.theme.colors.gray : "white"};
   padding: ${props => props.padding}rem 0;
-  width: 100vw;
+  width: 100%;
 `;
 
 const Grid = styled.div`
   display: grid;
-  width: 100vw;
+  width: 100%;
   grid-template-columns:
     [margin-start] 1fr [content-start] minmax(32rem, 114rem)
     [content-end] 1fr [margin-end];
@@ -37,7 +37,7 @@ const Container = styled.div`
   }
 
   @media ${device.mobile} {
-    padding: ${props => (props.fullWidth ? "0" : "0 8rem")};
+    padding: ${props => (props.fullWidth ? "0" : "0 4rem")};
     grid-template-columns: auto;
 
     ${({ topHeader }) =>
