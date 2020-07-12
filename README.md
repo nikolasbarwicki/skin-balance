@@ -2,6 +2,10 @@
 
 Commercial freelance project for beauty studio located in Wrocław, Poland.
 
+### Live demo
+
+[![Netlify Status](https://api.netlify.com/api/v1/badges/c15a1605-d60b-4504-800f-03249a167934/deploy-status)](https://trusting-montalcini-a7caa3.netlify.app/)
+
 <p align="center">
   <img width="600" src="https://i.ibb.co/q9rvvxz/Adnotacja-2020-07-12-173443.png">
 </p>
